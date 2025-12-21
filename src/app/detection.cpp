@@ -28,7 +28,7 @@ Detection::Detection(
     rclcpp::QoS subscription_qos(1);
     std::function<void(const sensor_msgs::msg::PointCloud2::SharedPtr)> subscription_callback = std::bind(&Detection::cloudCallbak,this, std::placeholders::_1);
     subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-        "livox/point_cloud_front",5,subscription_callback
+        "/lidar_front/points_in",5,subscription_callback
     );
     rclcpp::QoS qos(1);
     qos.best_effort();
@@ -67,7 +67,7 @@ void Detection::makeOutput(std::vector<Box> &out_detections,rclcpp::Time& stamp)
 {
     size_t num_objects = out_detections.size();
     int obj_index;
-    bbox_array_.header.frame_id = "livox";
+    bbox_array_.header.frame_id = "lidar_front";
     bbox_array_.header.stamp = stamp;
     bbox_array_.source_type = 2;
     bbox_array_.boxes.clear();

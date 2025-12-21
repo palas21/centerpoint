@@ -1,0 +1,3 @@
+[submodule "ws_msgs"]
+	path = ws_msgs
+	url = https://github.com/Tream733/ws_msgs.git
