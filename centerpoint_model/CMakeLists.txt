@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(centerpoint)
+project(centerpoint_model)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -20,7 +20,7 @@ find_package(tf2_eigen REQUIRED)
 find_package(pcl_conversions REQUIRED)
 find_package(PCL REQUIRED)
 find_package(visualization_msgs REQUIRED)
-find_package(ws_msgs REQUIRED)
+find_package(centerpoint_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
@@ -76,7 +76,7 @@ include_directories(
   ${CUDA_INCLUDE_DIRS}
   ${TENSORRT_INCLUDE_DIRS}
   ${YAML_CPP_INCLUDE_DIRS}
-  ${ws_msgs_INCLUDE_DIRS}
+  ${centerpoint_msgs_INCLUDE_DIRS}
 )
 
 link_directories(
@@ -109,7 +109,7 @@ ament_target_dependencies(${PROJECT_NAME}_node
     std_msgs
     geometry_msgs
     tf2_ros
-    ws_msgs 
+    centerpoint_msgs 
     CUDA
     yaml-cpp
   ) 
