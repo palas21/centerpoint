@@ -1,4 +1,4 @@
-module ws_msgs {
+module centerpoint_msgs {
   module msg {
     module ObjectClassification_Constants {
       const uint8 UNKNOWN = 0;

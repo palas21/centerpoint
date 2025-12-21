@@ -1,9 +1,9 @@
 #include "geometry_msgs/msg/Point32.idl"
-#include "ws_msgs/msg/ObjectClassification.idl"
-#include "ws_msgs/msg/Box.idl"
+#include "centerpoint_msgs/msg/ObjectClassification.idl"
+#include "centerpoint_msgs/msg/Box.idl"
 
 
-module ws_msgs {
+module centerpoint_msgs {
   module msg {
     typedef geometry_msgs::msg::Point32 geometry_msgs__msg__Point32;
     typedef geometry_msgs__msg__Point32 geometry_msgs__msg__Point32__8[8];
@@ -30,8 +30,8 @@ module ws_msgs {
       float acceleration_linear_y;    
       float heading;
       float existence_probability;
-      sequence<ws_msgs::msg::ObjectClassification> classification;
-      ws_msgs::msg::Box box_2d;
+      sequence<centerpoint_msgs::msg::ObjectClassification> classification;
+      centerpoint_msgs::msg::Box box_2d;
     };
   };
 };

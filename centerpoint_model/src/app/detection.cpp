@@ -1,5 +1,5 @@
 #include "app/detection.h"
-#include "ws_msgs/msg/bbox_array.hpp"
+#include "centerpoint_msgs/msg/bbox_array.hpp"
 #include <pcl/features/moment_of_inertia_estimation.h>
 
 using namespace std::chrono_literals;
@@ -32,7 +32,7 @@ Detection::Detection(
     );
     rclcpp::QoS qos(1);
     qos.best_effort();
-    pub_bbox_array_ = this->create_publisher<ws_msgs::msg::BboxArray>("bbox_array",10);
+    pub_bbox_array_ = this->create_publisher<centerpoint_msgs::msg::BboxArray>("bbox_array",10);
 }
 
 void Detection::loadParam(std::string & param_path)
@@ -72,7 +72,7 @@ void Detection::makeOutput(std::vector<Box> &out_detections,rclcpp::Time& stamp)
     bbox_array_.source_type = 2;
     bbox_array_.boxes.clear();
     for(obj_index = 0; obj_index < num_objects; obj_index++) {
-        ws_msgs::msg::Bbox bbox;
+        centerpoint_msgs::msg::Bbox bbox;
         float x = out_detections[obj_index].x;
         float y = out_detections[obj_index].y;
         float z = out_detections[obj_index].z - 1.8;

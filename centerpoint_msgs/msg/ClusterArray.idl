@@ -1,11 +1,11 @@
 // generated from rosidl_adapter/resource/msg.idl.em
-// with input from ws_msgs/msg/ClusterArray.msg
+// with input from centerpoint_msgs/msg/ClusterArray.msg
 // generated code does not contain a copyright notice
 
 #include "sensor_msgs/msg/PointCloud2.idl"
 #include "std_msgs/msg/Header.idl"
 
-module ws_msgs {
+module centerpoint_msgs {
   module msg {
     struct ClusterArray {
       std_msgs::msg::Header header;

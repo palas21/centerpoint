@@ -1,7 +1,7 @@
-#include "ws_msgs/msg/PointXYZIF.idl"
+#include "centerpoint_msgs/msg/PointXYZIF.idl"
 #include "std_msgs/msg/Header.idl"
 
-module ws_msgs {
+module centerpoint_msgs {
   module msg {
     @verbatim (language="comment", text=
       " Represent the clusters" "\n"
@@ -10,7 +10,7 @@ module ws_msgs {
     struct PointClusters {
       std_msgs::msg::Header header;
 
-      sequence<ws_msgs::msg::PointXYZIF> points;
+      sequence<centerpoint_msgs::msg::PointXYZIF> points;
 
       sequence<uint32> cluster_boundary;
     };

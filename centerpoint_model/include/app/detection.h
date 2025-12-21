@@ -7,9 +7,9 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/point_cloud2.hpp"
 #include "geometry_msgs/msg/pose_array.hpp"
-#include "ws_msgs/msg/cluster_array.hpp"
-#include "ws_msgs/msg/bbox.hpp"
-#include "ws_msgs/msg/bbox_array.hpp"
+#include "centerpoint_msgs/msg/cluster_array.hpp"
+#include "centerpoint_msgs/msg/bbox.hpp"
+#include "centerpoint_msgs/msg/bbox_array.hpp"
 #include <pcl/filters/passthrough.h>
 #include "centerpoint.h"
 #include "process.h"
@@ -18,8 +18,8 @@
 #include <deque>
 #include <chrono>
 
-using Bbox = ws_msgs::msg::Bbox;
-using bboxArray = ws_msgs::msg::BboxArray;
+using Bbox = centerpoint_msgs::msg::Bbox;
+using bboxArray = centerpoint_msgs::msg::BboxArray;
 static size_t BoxFeature = 7;
 using Clock = std::chrono::high_resolution_clock;
 class Detection : public rclcpp::Node
@@ -38,7 +38,7 @@ private:
 
     rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr subscription_;
 
-    rclcpp::Publisher<ws_msgs::msg::BboxArray>::SharedPtr pub_bbox_array_;
+    rclcpp::Publisher<centerpoint_msgs::msg::BboxArray>::SharedPtr pub_bbox_array_;
 
     rclcpp::Clock::SharedPtr clock_;
 
