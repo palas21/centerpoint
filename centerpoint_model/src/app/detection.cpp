@@ -25,14 +25,19 @@ Detection::Detection(
     centerpoint_.reset(new CenterPoint(use_onnx_,rpn_file_,centerpoint_config_));
 
     // Create a ROS subscriber for the input cloud
-    rclcpp::QoS subscription_qos(1);
-    std::function<void(const sensor_msgs::msg::PointCloud2::SharedPtr)> subscription_callback = std::bind(&Detection::cloudCallbak,this, std::placeholders::_1);
+    auto sub_qos = rclcpp::QoS(rclcpp::KeepLast(10)).reliable().durability_volatile();
     subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-        "/lidar_front/points_in",5,subscription_callback
+        "/lidar_front/points_in",
+        sub_qos,
+        std::bind(&Detection::cloudCallbak, this, std::placeholders::_1)
     );
     rclcpp::QoS qos(1);
     qos.best_effort();
     pub_bbox_array_ = this->create_publisher<centerpoint_msgs::msg::BboxArray>("bbox_array",10);
+<<<<<<< HEAD
+=======
+    RCLCPP_INFO(this->get_logger(),"Centerpoint started!");
+>>>>>>> cb15419 (fix: msg name is changed from other files.)
 }
 
 void Detection::loadParam(std::string & param_path)
@@ -43,7 +48,7 @@ void Detection::loadParam(std::string & param_path)
     use_onnx_ = config["UseOnnx"].as<bool>();
 }
 
-void Detection::cloudCallbak(const sensor_msgs::msg::PointCloud2::ConstPtr &input){
+void Detection::cloudCallbak(const sensor_msgs::msg::PointCloud2::ConstSharedPtr &input){
     std::cout<<"  ======================sub========================   ok     index "<< ++sub_count_ << std::endl;
         
     m_sync_start_time_ = Clock::now();

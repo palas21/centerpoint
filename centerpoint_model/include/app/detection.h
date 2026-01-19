@@ -54,7 +54,7 @@ private:
     std::string rpn_file_;
     std::string centerpoint_config_;
     std::string file_name_;
-    std::string param_path_ = "/home/txy/wspace/param/centerpoint.yaml";
+    std::string param_path_ = "/ros2_ws/src/centerpoint_model/cfgs/centerpoint.yaml";
 
     int pub_count_ = 0;
 
