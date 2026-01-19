@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  centerpoint:
+    image: centerpoint:latest
+    container_name: centerpoint_container
+    network_mode: host
+    ipc: host
+    privileged: false
+    user: "1000:1000"
+
+    environment:
+      ROS_DOMAIN_ID: 0
+      ROS_LOCALHOST_ONLY: 0
+      RMW_IMPLEMENTATION: rmw_fastrtps_cpp
+
+    volumes:
+      - /path/to/local/repo:/ws_centerpoint:rw
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    stdin_open: true
+    tty: true
